@@ -1,0 +1,17 @@
+pipeline {
+    
+    agent { 'jdk11' }
+
+    stages {
+        stage ('souce code management') {
+            steps {
+                git branch: 'main', url: 'https://github.com/spring-projects/spring-petclinic.git'
+            }
+        }
+        stage ('build package') {
+            steps {
+                sh 'mvn packge'
+            }
+        }
+    }
+}
